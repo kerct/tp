@@ -26,7 +26,7 @@ class ModuleListTest {
         System.setOut(new PrintStream(outContent));
         modulesTest.addExp("addExp CS3030 4", true, storage);
         String expected = "CS3030, Expected Workload: 4h is added." + System.lineSeparator();
-        assertArrayEquals(testList.toArray(), modulesTest.modList.toArray());
+        assertArrayEquals(testList.toArray(), modulesTest.getData().toArray());
         assertEquals(expected + System.lineSeparator(), outContent.toString());
     }
 
@@ -76,7 +76,7 @@ class ModuleListTest {
         String expected = "CS5000 is removed." + System.lineSeparator()
                 + "All tasks under CS5000 are deleted." + System.lineSeparator();
 
-        modulesTest.deleteMod("deleteMod CS5000", true, storage);
+        modulesTest.deleteMod("deleteMod CS5000", true, storage, new TaskList(modulesTest));
         assertFalse(modulesTest.checkIfModuleExist("CS5000"));
         assertEquals(expected + System.lineSeparator(), outContent.toString());
     }
@@ -87,7 +87,7 @@ class ModuleListTest {
         System.setOut(new PrintStream(outContent));
         String expected = "CS0000 does not exist." + System.lineSeparator();
 
-        modulesTest.deleteMod("deleteMod CS0000", true, storage);
+        modulesTest.deleteMod("deleteMod CS0000", true, storage,  new TaskList(modulesTest));
         assertEquals(expected + System.lineSeparator(), outContent.toString());
     }
 
@@ -96,6 +96,7 @@ class ModuleListTest {
 
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
+        assertEquals(true, modulesTest.checkIfModuleExist("CS3030"));
         modulesTest.deleteExp("deleteExp CS3030", true, storage);
         String expected = "Expected Workload of CS3030 is removed." + System.lineSeparator();
         assertEquals(expected + System.lineSeparator(), outContent.toString());

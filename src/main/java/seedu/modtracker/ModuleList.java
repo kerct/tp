@@ -214,7 +214,7 @@ public class ModuleList {
      * @param toPrint whether the UI should print the output.
      * @param storage storage object where data is stored.
      */
-    public void deleteMod(String input, boolean toPrint, Storage storage) {
+    public void deleteMod(String input, boolean toPrint, Storage storage, TaskList taskList) {
         try {
             String[] modInfo = input.trim().split(" ", 2);
             String modCode = modInfo[1];
@@ -234,7 +234,6 @@ public class ModuleList {
                     ui.printNotExist(modCode);
                 }
             }
-            TaskList taskList = new TaskList();
             ArrayList<Task> tasks = taskList.getTaskData();
             int i;
             for (i = 1; i <= tasks.size(); i++) {

@@ -34,7 +34,7 @@ class NotificationTest {
         modules.addTime("addtime cs5555 1 1", true, storage);
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
-        notification.start();
+        notification.start(modules);
         String commandMsg = "Please type `open` to view the notification and an encouraging message.";
         String notification = "You have 1 notifications." + System.lineSeparator();
         String expected = notification + commandMsg + System.lineSeparator();

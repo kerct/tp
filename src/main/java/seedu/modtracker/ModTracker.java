@@ -16,15 +16,14 @@ public class ModTracker {
         do {
             modTracker = new ModTracker("data/modtracker.txt");
             modTracker.run();
-        }
-        while (modTracker.toRestart());
+        } while (modTracker.toRestart());
     }
 
     public ModTracker(String filePath) {
         ui = new Ui();
         modList = new ModuleList();
         storage = new Storage(filePath);
-        taskList = new TaskList();
+        taskList = new TaskList(modList);
         notification = new Notification();
         parser = new Parser();
     }

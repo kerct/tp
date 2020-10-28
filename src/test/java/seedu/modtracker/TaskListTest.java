@@ -14,7 +14,7 @@ public class TaskListTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        TaskList taskList = new TaskList();
+        TaskList taskList = new TaskList(new ModuleList());
         taskList.addTask("addtask CS2101 study", true, null);
         String expected = "CS2101 does not exist." + System.lineSeparator();
         assertEquals(expected + System.lineSeparator(), outContent.toString());
@@ -25,7 +25,7 @@ public class TaskListTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        TaskList taskList = new TaskList();
+        TaskList taskList = new TaskList(new ModuleList());
         taskList.addTask("addtask cs21 study", true, null);
         String expected = "Please check module code again. The module code should have "
                 + "6 - 8 characters without any spacing." + System.lineSeparator();

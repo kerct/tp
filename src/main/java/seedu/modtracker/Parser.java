@@ -52,7 +52,7 @@ public class Parser {
             modList.addExp(input, toPrint, storage);
             break;
         case COMMAND_DELETEMOD:
-            modList.deleteMod(input, toPrint, storage);
+            modList.deleteMod(input, toPrint, storage, taskList);
             break;
         case COMMAND_EDITTIME:
             try {
